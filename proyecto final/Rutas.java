@@ -4,9 +4,7 @@ public class Rutas {
 
     protected String edificios[];
 
-    /*
-     Constructor
-    */
+    /* Constructor */
     public Rutas() {
 
         edificios = new String[5];
@@ -19,9 +17,7 @@ public class Rutas {
         edificios[3] = "Rectoria";
         edificios[4] = "Laboratorios";
 
-        /*
-         Conexiones ya definidas
-        */
+        /* Conexiones ya definidas */
 
         distancias[0][1] = 100;
         distancias[1][0] = 100;
@@ -39,9 +35,7 @@ public class Rutas {
         distancias[3][4] = 120;
     }
 
-    /*
-     Muestra edificios
-    */
+    /* Muestra edificios */
     public void mostrarEdificios() {
 
         for (int i = 0; i < edificios.length; i++) {
@@ -51,9 +45,7 @@ public class Rutas {
         }
     }
 
-    /*
-     Muestra matriz
-    */
+    /* Muestra matriz */
     public void mostrarMatriz() {
 
         for (int i = 0; i < 5; i++) {
@@ -68,9 +60,7 @@ public class Rutas {
         }
     }
 
-    /*
-     Dijkstra basico
-    */
+    /* Dijkstra basico */
     public void dijkstra(
         int origen,
         int destino) {
@@ -92,9 +82,7 @@ public class Rutas {
 
     } else {
 
-        /*
-         Buscar rutas intermedias
-        */
+        /* Buscar rutas intermedias*/
 
         for (int i = 0; i < 5; i++) {
 
@@ -103,24 +91,16 @@ public class Rutas {
                     distancias[i][destino] != 0) {
 
                 int total =
-                        distancias[origen][i]
-                        +
-                        distancias[i][destino];
+                        distancias[origen][i] + distancias[i][destino];
 
                 System.out.println(
                         "Ruta mas corta:");
 
                 System.out.println(
-                        edificios[origen]
-                        + " -> "
-                        + edificios[i]
-                        + " -> "
-                        + edificios[destino]);
+                        edificios[origen] + " -> " + edificios[i] + " -> " + edificios[destino]);
 
                 System.out.println(
-                        "Distancia total: "
-                        + total
-                        + " metros");
+                        "Distancia total: " + total + " metros");
 
                 return;
             }

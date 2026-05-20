@@ -2,7 +2,13 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 public class Simulador {
-
+/*esta clase es el punto de entrada del programa, 
+aqui se muestra un menu para interactuar con el sistema de gestion de estudiantes, 
+materias, horarios, rutas y reportes academicos. 
+Se utiliza un bucle para mostrar el menu hasta que el usuario decida salir
+.Se manejan las operaciones de registrar estudiantes, crear materias, inscribir estudiantes en materias, 
+reservar horarios en aulas, calcular rutas entre edificios y generar reportes academicos. 
+Tambien se implementa un sistema de deshacer y rehacer para las operaciones realizadas.*/
     public static void main(String[] args) {
 
         Scanner scanner =
@@ -29,8 +35,9 @@ public class Simulador {
                 new ReporteAcademico();
 
         int opcion = 0;
-
         while (opcion != 21) {
+/*menu principal del programa, se muestra las opciones disponibles para el usuario, 
+se utiliza un switch para manejar las diferentes opciones seleccionadas por el usuario.*/
 
             System.out.println("");
             System.out.println("=== GESTION DE ESTUDIANTES ===");
@@ -82,7 +89,9 @@ public class Simulador {
             scanner.nextLine();
 
             switch (opcion) {
-
+/*dependiendo de la opcion seleccionada por el usuario, 
+se ejecuta el bloque de codigo correspondiente para realizar la accion deseada*/
+                
                 case 1:
 
                     System.out.print("Nombre: ");
@@ -120,6 +129,8 @@ public class Simulador {
 
                     break;
 
+/*busqueda de estudiante por ID, si se encuentra se muestra su informacion, 
+si no se muestra un mensaje de error*/
                 case 2:
 
                     System.out.print(
@@ -142,6 +153,8 @@ public class Simulador {
 
                     break;
 
+/*listado de todos los estudiantes registrados, se muestra su informacion*/
+
                 case 3:
 
                     if (estudiantes.isEmpty()) {
@@ -162,6 +175,8 @@ public class Simulador {
 
                     break;
 
+/*eliminacion de estudiante por ID, si se encuentra se elimina, 
+si no se muestra un mensaje de error*/
                 case 4:
 
                     System.out.print(
@@ -186,6 +201,9 @@ public class Simulador {
                     }
 
                     break;
+
+
+/*creacion de materia */
 
                 case 5:
 
@@ -227,22 +245,17 @@ public class Simulador {
 
                     Materia materia =
                             new Materia(
-                                    codigo,
-                                    nombreMateria,
-                                    cupos,
-                                    creditos,
-                                    dia,
-                                    hora);
+                                    codigo, nombreMateria,cupos, creditos, dia, hora);
 
                     materias.put(
-                            codigo,
-                            materia);
+                            codigo, materia);
 
                     System.out.println(
                             "Materia creada");
 
                     break;
 
+/*agregar pre requisito a una materia */
                 case 6:
 
                     System.out.print(
@@ -268,7 +281,9 @@ public class Simulador {
                                 "Materia no existe");
                     }
 
-                    break;
+                break;
+
+/*mostrar pre requisitos de una materia */
 
                 case 7:
 
@@ -292,6 +307,8 @@ public class Simulador {
 
                     break;
 
+/*inscribir estudiante en una materia, se verifica que el estudiante y la materia existan, 
+si existen se inscribe, si no se muestra un mensaje de error*/
                 case 8:
 
                     System.out.print(
@@ -321,7 +338,8 @@ public class Simulador {
                     }
 
                     break;
-
+/*cancelar la inscripcion de un estudiante en una materia, se verifica que el estudiante 
+y la materia existan, si existen se cancela la inscripcion, si no se muestra un mensaje de error*/
                 case 9:
 
                     System.out.print(
@@ -351,7 +369,8 @@ public class Simulador {
                     }
 
                     break;
-
+/*mostrar la cola de espera de una materia, se verifica que la materia exista, 
+si existe se muestra la cola, si no se muestra un mensaje de error*/     
                 case 10:
 
                     System.out.print(
@@ -373,7 +392,9 @@ public class Simulador {
                     }
 
                     break;
-
+/*reservar un horario en el aula, se recibe el dia, la hora y la duracion de la reserva, 
+se verifica que el horario este disponible, si esta disponible se reserva, 
+si no se muestra un mensaje de error*/      
                 case 11:
 
                     System.out.print(
@@ -400,7 +421,9 @@ public class Simulador {
                             duracion);
 
                     break;
-
+/*liberar un horario en el aula, se recibe el dia, la hora y la duracion de la reserva a liberar, 
+se verifica que el horario este ocupado, si esta ocupado se libera, 
+si no se muestra un mensaje de error*/
                 case 12:
 
                     System.out.print(
@@ -427,7 +450,9 @@ public class Simulador {
                             duracionLiberar);
 
                     break;
-
+/*consultar si un horario esta ocupado o libre, se recibe el dia y la hora a consultar,
+se verifica el estado del horario, si esta ocupado se muestra un mensaje indicando que esta ocupado,
+si esta libre se muestra un mensaje indicando que esta libre*/
                 case 13:
 
                     System.out.print(
@@ -448,6 +473,9 @@ public class Simulador {
 
                     break;
 
+/*calcular la ruta mas corta entre dos edificios, se muestra la lista de edificios disponibles,
+se recibe el origen y el destino, se verifica que ambos existan, si existen se calcula la ruta mas corta utilizando el algoritmo de Dijkstra,
+si no se muestra un mensaje de error*/
                 case 14:
 
                     rutas.mostrarEdificios();
@@ -470,11 +498,15 @@ public class Simulador {
 
                     break;
 
+/*mostrar la matriz de distancias entre los edificios, se muestra la matriz en formato de tabla*/
                 case 15:
 
                     rutas.mostrarMatriz();
 
                     break;
+/*registrar una nota para un estudiante en una materia, se recibe el ID del estudiante, el codigo de la materia
+ y la nota a registrar, se verifica que el estudiante exista, 
+ si existe se registra la nota, si no se muestra un mensaje de error*/
 
                 case 16:
 
@@ -515,6 +547,9 @@ public class Simulador {
 
                     break;
 
+/*ver el reporte academico de un estudiante, se recibe el ID del estudiante, se verifica que exista,
+si existe se muestra su informacion, sus notas y las materias inscritas, si no se muestra un mensaje de error*/
+
                 case 17:
 
                     System.out.print(
@@ -537,18 +572,27 @@ public class Simulador {
 
                     break;
 
+/*deshacer la ultima operacion realizada, se verifica que haya una operacion para deshacer, 
+si hay se deshace, si no se muestra un mensaje de error*/
+               
                 case 18:
 
                     sistema.deshacer();
 
                     break;
 
+/*rehacer la ultima operacion deshecha, se verifica que haya una operacion para rehacer,
+si hay se rehace, si no se muestra un mensaje de error*/
+               
                 case 19:
 
                     sistema.rehacer();
 
                     break;
 
+/*navegacion por el sistema de reportes, se muestra un mensaje indicando que se esta navegando por los reportes,
+se sugiere al usuario usar las opciones de deshacer y rehacer para navegar entre los reportes generados*/
+               
                 case 20:
 
                     System.out.println(
@@ -558,6 +602,7 @@ public class Simulador {
                             "Use deshacer y rehacer");
 
                     break;
+/*salir del programa, se muestra un mensaje indicando que se esta saliendo del programa*/
 
                 case 21:
 

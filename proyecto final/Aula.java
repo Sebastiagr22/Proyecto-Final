@@ -1,4 +1,5 @@
 public class Aula {
+/*esta clase representa un aula con un horario de reservas*/
 
     protected String nombre;
 
@@ -10,13 +11,12 @@ public class Aula {
 
         horarios = new boolean[7][24];
     }
+/*metodo para reservar un horario en el aula, recibe el dia, la hora y la duracion de la reserva*/
 
     public boolean reservar(
             int dia, int hora, int duracion) {
 
-        for (int i = hora;
-                i < hora + duracion;
-                i++) {
+        for (int i = hora; i < hora + duracion; i++) {
 
             if (horarios[dia][i]) {
 
@@ -39,7 +39,7 @@ public class Aula {
 
         return true;
     }
-
+/*metodo para liberar un horario en el aula, recibe el dia, la hora y la duracion de la reserva a liberar*/
     public void liberar(
             int dia, int hora, int duracion) {
 
@@ -53,7 +53,8 @@ public class Aula {
         System.out.println(
                 "Horario liberado");
     }
-
+ /*metodo para consultar si un horario esta ocupado o libre, recibe el dia y la hora a consultar*/
+ 
     public void consultar(
             int dia, int hora) {
 

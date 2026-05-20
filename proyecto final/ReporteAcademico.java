@@ -1,5 +1,7 @@
 public class ReporteAcademico {
 
+/*metodo para mostrar el reporte academico de un estudiante*/
+
     public void mostrarReporte(
             Estudiante estudiante) {
 

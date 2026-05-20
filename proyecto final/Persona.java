@@ -1,9 +1,11 @@
+/*primera clase, la clase padre*/ 
 public abstract class Persona {
 
     protected String nombre;
     protected String id;
     protected String email;
-
+    
+    /*constructor*/ 
     public Persona(
             String nombre, String id, String email) {
 
@@ -29,3 +31,5 @@ public abstract class Persona {
 
     public abstract void mostrarInformacion();
 }
+/*Esta clase funciona como clase padre
+de Estudiante.*/

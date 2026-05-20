@@ -1,6 +1,6 @@
 import java.util.Stack;
 public class SistemaDeshacer {
-
+/*esta clase se encarga de manejar las operaciones de deshacer y rehacer*/
     protected Stack<String> pilaDeshacer;
 
     protected Stack<String> pilaRehacer;
@@ -13,6 +13,7 @@ public class SistemaDeshacer {
         pilaRehacer =
                 new Stack<String>();
     }
+ /*metodo para guardar las operaciones en la pila de deshacer*/
 
     public void guardarOperacion(
             String operacion) {
@@ -42,7 +43,7 @@ public class SistemaDeshacer {
                     "No hay operaciones");
         }
     }
-
+ /*metodo para rehacer las operaciones guardadas en la pila de rehacer*/
     public void rehacer() {
 
         if (!pilaRehacer.isEmpty()) {

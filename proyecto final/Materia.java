@@ -9,11 +9,13 @@ public class Materia {
 
     protected int dia;
     protected int hora;
-
+/* aqui se definen los pre requisitos */
     protected LinkedList<String> preRequisitos;
 
+/*aqui se definen los estudiantes inscritos */
     protected LinkedList<Estudiante> inscritos;
 
+/*aqui se define la cola de espera */
     protected Queue<Estudiante> colaEspera;
 
     public Materia(
@@ -79,6 +81,9 @@ public class Materia {
                     "Agregado a cola");
         }
     }
+/* aqui se cancela la inscripcion de un estudiante, si el estudiante estaba inscrito, se elimina de la
+ lista de inscritos y se agrega a la materia al siguiente estudiante en la cola de espera.
+ Si el estudiante no estaba inscrito, se muestra un mensaje indicando que no estaba inscrito. */
 
     public void cancelarInscripcion(
             Estudiante estudiante) {
@@ -110,7 +115,7 @@ public class Materia {
                     "No estaba inscrito");
         }
     }
-
+ /* aqui se muestra la lista de estudiantes inscritos y la cola de espera. */
     public void mostrarInscritos() {
 
         System.out.println(
