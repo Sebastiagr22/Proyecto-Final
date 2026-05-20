@@ -17,18 +17,12 @@ public class Materia {
     protected Queue<Estudiante> colaEspera;
 
     public Materia(
-            String codigo,
-            String nombre,
-            int cupos,
-            int creditos,
-            int dia,
-            int hora) {
+            String codigo, String nombre, int cupos, int creditos,  int dia, int hora) {
 
         this.codigo = codigo;
         this.nombre = nombre;
         this.cupos = cupos;
         this.creditos = creditos;
-
         this.dia = dia;
         this.hora = hora;
 

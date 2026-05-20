@@ -12,9 +12,7 @@ public class Aula {
     }
 
     public boolean reservar(
-            int dia,
-            int hora,
-            int duracion) {
+            int dia, int hora, int duracion) {
 
         for (int i = hora;
                 i < hora + duracion;
@@ -43,9 +41,7 @@ public class Aula {
     }
 
     public void liberar(
-            int dia,
-            int hora,
-            int duracion) {
+            int dia, int hora, int duracion) {
 
         for (int i = hora;
                 i < hora + duracion;
@@ -59,8 +55,7 @@ public class Aula {
     }
 
     public void consultar(
-            int dia,
-            int hora) {
+            int dia, int hora) {
 
         if (horarios[dia][hora]) {
 

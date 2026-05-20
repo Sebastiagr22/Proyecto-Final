@@ -4,7 +4,7 @@ public class ReporteAcademico {
             Estudiante estudiante) {
 
         System.out.println(
-                "===== REPORTE =====");
+                "REPORTE");
 
         estudiante.mostrarInformacion();
 
@@ -17,9 +17,7 @@ public class ReporteAcademico {
                 estudiante.getMaterias()) {
 
             System.out.println(
-                    materia.getCodigo()
-                    + " - "
-                    + materia.getNombre());
+                    materia.getCodigo() + " - " + materia.getNombre());
         }
     }
 }

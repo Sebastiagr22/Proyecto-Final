@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.HashMap;
-import java.util.LinkedList;
+
 public class Simulador {
 
     public static void main(String[] args) {
@@ -28,12 +28,9 @@ public class Simulador {
         ReporteAcademico reporte =
                 new ReporteAcademico();
 
-        ProcesadorLotes lotes =
-                new ProcesadorLotes();
-
         int opcion = 0;
 
-        while (opcion != 22) {
+        while (opcion != 21) {
 
             System.out.println("");
             System.out.println("=== GESTION DE ESTUDIANTES ===");
@@ -42,6 +39,7 @@ public class Simulador {
             System.out.println("3. Listar estudiantes");
             System.out.println("4. Eliminar estudiante");
 
+            System.out.println("");
             System.out.println("=== GESTION DE MATERIAS ===");
             System.out.println("5. Crear materia");
             System.out.println("6. Agregar pre requisito");
@@ -50,29 +48,34 @@ public class Simulador {
             System.out.println("9. Cancelar inscripcion");
             System.out.println("10. Mostrar cola");
 
+            System.out.println("");
             System.out.println("=== GESTION HORARIOS ===");
             System.out.println("11. Reservar horario");
             System.out.println("12. Liberar horario");
             System.out.println("13. Consultar horario");
 
+            System.out.println("");
             System.out.println("=== RUTAS ===");
-            System.out.println("14. Agregar conexion");
-            System.out.println("15. Mostrar ruta");
+            System.out.println("14. Calcular ruta mas corta");
+            System.out.println("15. Mostrar matriz");
 
+            System.out.println("");
             System.out.println("=== REPORTES ===");
             System.out.println("16. Registrar nota");
             System.out.println("17. Ver reporte");
 
+            System.out.println("");
             System.out.println("=== DESHACER ===");
             System.out.println("18. Deshacer");
             System.out.println("19. Rehacer");
 
-            System.out.println("=== LOTES ===");
-            System.out.println("20. Procesar lotes");
+            System.out.println("");
+            System.out.println("20. Navegacion reportes");
 
-            System.out.println("21. Mostrar matriz");
+            System.out.println("");
+            System.out.println("21. Salir");
 
-            System.out.println("22. Salir");
+            System.out.print("Seleccione opcion: ");
 
             opcion = scanner.nextInt();
 
@@ -134,19 +137,27 @@ public class Simulador {
                     } else {
 
                         System.out.println(
-                                "No encontrado");
+                                "Estudiante no encontrado");
                     }
 
                     break;
 
                 case 3:
 
-                    for (Estudiante e :
-                            estudiantes.values()) {
+                    if (estudiantes.isEmpty()) {
 
-                        e.mostrarInformacion();
+                        System.out.println(
+                                "No hay estudiantes");
 
-                        System.out.println("");
+                    } else {
+
+                        for (Estudiante e :
+                                estudiantes.values()) {
+
+                            e.mostrarInformacion();
+
+                            System.out.println("");
+                        }
                     }
 
                     break;
@@ -154,15 +165,25 @@ public class Simulador {
                 case 4:
 
                     System.out.print(
-                            "ID: ");
+                            "ID estudiante: ");
 
                     String eliminar =
                             scanner.nextLine();
 
-                    estudiantes.remove(eliminar);
+                    if (estudiantes.containsKey(
+                            eliminar)) {
 
-                    System.out.println(
-                            "Eliminado");
+                        estudiantes.remove(
+                                eliminar);
+
+                        System.out.println(
+                                "Estudiante eliminado");
+
+                    } else {
+
+                        System.out.println(
+                                "No existe");
+                    }
 
                     break;
 
@@ -175,7 +196,7 @@ public class Simulador {
                             scanner.nextLine();
 
                     System.out.print(
-                            "Nombre: ");
+                            "Nombre materia: ");
 
                     String nombreMateria =
                             scanner.nextLine();
@@ -236,8 +257,16 @@ public class Simulador {
                     String pre =
                             scanner.nextLine();
 
-                    materias.get(cod)
-                            .agregarPreRequisito(pre);
+                    if (materias.containsKey(cod)) {
+
+                        materias.get(cod)
+                                .agregarPreRequisito(pre);
+
+                    } else {
+
+                        System.out.println(
+                                "Materia no existe");
+                    }
 
                     break;
 
@@ -249,8 +278,17 @@ public class Simulador {
                     String mostrar =
                             scanner.nextLine();
 
-                    materias.get(mostrar)
-                            .mostrarPreRequisitos();
+                    if (materias.containsKey(
+                            mostrar)) {
+
+                        materias.get(mostrar)
+                                .mostrarPreRequisitos();
+
+                    } else {
+
+                        System.out.println(
+                                "Materia no encontrada");
+                    }
 
                     break;
 
@@ -268,9 +306,19 @@ public class Simulador {
                     String codMat =
                             scanner.nextLine();
 
-                    materias.get(codMat)
-                            .inscribirEstudiante(
-                                    estudiantes.get(idEst));
+                    if (estudiantes.containsKey(idEst)
+                            &&
+                            materias.containsKey(codMat)) {
+
+                        materias.get(codMat)
+                                .inscribirEstudiante(
+                                        estudiantes.get(idEst));
+
+                    } else {
+
+                        System.out.println(
+                                "Datos invalidos");
+                    }
 
                     break;
 
@@ -288,9 +336,19 @@ public class Simulador {
                     String matCan =
                             scanner.nextLine();
 
-                    materias.get(matCan)
-                            .cancelarInscripcion(
-                                    estudiantes.get(idCan));
+                    if (estudiantes.containsKey(idCan)
+                            &&
+                            materias.containsKey(matCan)) {
+
+                        materias.get(matCan)
+                                .cancelarInscripcion(
+                                        estudiantes.get(idCan));
+
+                    } else {
+
+                        System.out.println(
+                                "Datos invalidos");
+                    }
 
                     break;
 
@@ -302,71 +360,121 @@ public class Simulador {
                     String cola =
                             scanner.nextLine();
 
-                    materias.get(cola)
-                            .mostrarCola();
+                    if (materias.containsKey(
+                            cola)) {
+
+                        materias.get(cola)
+                                .mostrarCola();
+
+                    } else {
+
+                        System.out.println(
+                                "Materia no encontrada");
+                    }
 
                     break;
 
                 case 11:
 
-                    aula.reservar(1, 8, 2);
+                    System.out.print(
+                            "Dia: ");
+
+                    int diaReserva =
+                            scanner.nextInt();
+
+                    System.out.print(
+                            "Hora: ");
+
+                    int horaReserva =
+                            scanner.nextInt();
+
+                    System.out.print(
+                            "Duracion: ");
+
+                    int duracion =
+                            scanner.nextInt();
+
+                    aula.reservar(
+                            diaReserva,
+                            horaReserva,
+                            duracion);
 
                     break;
 
                 case 12:
 
-                    aula.liberar(1, 8, 2);
+                    System.out.print(
+                            "Dia: ");
+
+                    int diaLiberar =
+                            scanner.nextInt();
+
+                    System.out.print(
+                            "Hora: ");
+
+                    int horaLiberar =
+                            scanner.nextInt();
+
+                    System.out.print(
+                            "Duracion: ");
+
+                    int duracionLiberar =
+                            scanner.nextInt();
+
+                    aula.liberar(
+                            diaLiberar,
+                            horaLiberar,
+                            duracionLiberar);
 
                     break;
 
                 case 13:
 
-                    aula.consultar(1, 8);
+                    System.out.print(
+                            "Dia: ");
+
+                    int diaConsulta =
+                            scanner.nextInt();
+
+                    System.out.print(
+                            "Hora: ");
+
+                    int horaConsulta =
+                            scanner.nextInt();
+
+                    aula.consultar(
+                            diaConsulta,
+                            horaConsulta);
 
                     break;
 
                 case 14:
 
-    System.out.println("0. Ingenieria");
-    System.out.println("1. Biblioteca");
-    System.out.println("2. Cafeteria");
-    System.out.println("3. Rectoria");
-    System.out.println("4. Laboratorios");
+                    rutas.mostrarEdificios();
 
-    System.out.print("Origen: ");
-    int origen = scanner.nextInt();
+                    System.out.print(
+                            "Origen: ");
 
-    System.out.print("Destino: ");
-    int destino = scanner.nextInt();
+                    int origenRuta =
+                            scanner.nextInt();
 
-    System.out.print("Distancia: ");
-    int distancia = scanner.nextInt();
+                    System.out.print(
+                            "Destino: ");
 
-    rutas.conectar(
-            origen,
-            destino,
-            distancia);
+                    int destinoRuta =
+                            scanner.nextInt();
 
-    break;
-               case 15:
+                    rutas.dijkstra(
+                            origenRuta,
+                            destinoRuta);
 
-    System.out.println("0. Ingenieria");
-    System.out.println("1. Biblioteca");
-    System.out.println("2. Cafeteria");
-    System.out.println("3. Rectoria");
-    System.out.println("4. Laboratorios");
+                    break;
 
-    System.out.print("Origen: ");
-    int origenRuta = scanner.nextInt();
+                case 15:
 
-    System.out.print("Destino: ");
-    int destinoRuta = scanner.nextInt();
+                    rutas.mostrarMatriz();
 
-    rutas.mostrarRuta(
-            origenRuta,
-            destinoRuta);
-
-    break;
+                    break;
 
                 case 16:
 
@@ -388,13 +496,22 @@ public class Simulador {
                     double nota =
                             scanner.nextDouble();
 
-                    estudiantes.get(notaId)
-                            .registrarNota(
-                                    notaMat,
-                                    nota);
+                    if (estudiantes.containsKey(
+                            notaId)) {
 
-                    System.out.println(
-                            "Nota registrada");
+                        estudiantes.get(notaId)
+                                .registrarNota(
+                                        notaMat,
+                                        nota);
+
+                        System.out.println(
+                                "Nota registrada");
+
+                    } else {
+
+                        System.out.println(
+                                "Estudiante no encontrado");
+                    }
 
                     break;
 
@@ -406,8 +523,17 @@ public class Simulador {
                     String rep =
                             scanner.nextLine();
 
-                    reporte.mostrarReporte(
-                            estudiantes.get(rep));
+                    if (estudiantes.containsKey(
+                            rep)) {
+
+                        reporte.mostrarReporte(
+                                estudiantes.get(rep));
+
+                    } else {
+
+                        System.out.println(
+                                "No encontrado");
+                    }
 
                     break;
 
@@ -425,26 +551,15 @@ public class Simulador {
 
                 case 20:
 
-                    LinkedList<String> datos =
-                            new LinkedList<String>();
+                    System.out.println(
+                            "Sistema de navegacion");
 
-                    datos.add(
-                            "Juan,CALC1,4.5");
-
-                    datos.add(
-                            "Ana,POO,3.8");
-
-                    lotes.procesarNotas(datos);
+                    System.out.println(
+                            "Use deshacer y rehacer");
 
                     break;
 
                 case 21:
-
-                    rutas.mostrarMatriz();
-
-                    break;
-
-                case 22:
 
                     System.out.println(
                             "Fin del programa");

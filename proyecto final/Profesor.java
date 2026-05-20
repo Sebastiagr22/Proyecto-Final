@@ -3,10 +3,7 @@ public class Profesor extends Persona {
     protected String especialidad;
 
     public Profesor(
-            String nombre,
-            String id,
-            String email,
-            String especialidad) {
+            String nombre, String id, String email, String especialidad) {
 
         super(nombre, id, email);
 

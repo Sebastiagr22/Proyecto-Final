@@ -9,10 +9,7 @@ public class Estudiante extends Persona {
     protected HashMap<String, Double> notas;
 
     public Estudiante(
-            String nombre,
-            String id,
-            String email,
-            int semestre) {
+            String nombre, String id, String email, int semestre) {
 
         super(nombre, id, email);
 
@@ -56,8 +53,7 @@ public class Estudiante extends Persona {
     }
 
     public void registrarNota(
-            String codigo,
-            double nota) {
+            String codigo, double nota) {
 
         notas.put(codigo, nota);
     }
@@ -92,9 +88,7 @@ public class Estudiante extends Persona {
         for (String codigo : notas.keySet()) {
 
             System.out.println(
-                    codigo
-                    + " -> "
-                    + notas.get(codigo));
+                    codigo + " -> " + notas.get(codigo));
         }
 
         System.out.println(
