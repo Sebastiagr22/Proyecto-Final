@@ -5,8 +5,8 @@ public class Simulador {
 /*esta clase es el punto de entrada del programa, 
 aqui se muestra un menu para interactuar con el sistema de gestion de estudiantes, 
 materias, horarios, rutas y reportes academicos. 
-Se utiliza un bucle para mostrar el menu hasta que el usuario decida salir
-.Se manejan las operaciones de registrar estudiantes, crear materias, inscribir estudiantes en materias, 
+Se utiliza un bucle para mostrar el menu hasta que el usuario decida salir.
+Se manejan las operaciones de registrar estudiantes, crear materias, inscribir estudiantes en materias, 
 reservar horarios en aulas, calcular rutas entre edificios y generar reportes academicos. 
 Tambien se implementa un sistema de deshacer y rehacer para las operaciones realizadas.*/
     public static void main(String[] args) {
