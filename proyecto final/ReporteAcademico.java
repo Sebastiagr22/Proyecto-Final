@@ -1,25 +1,24 @@
 public class ReporteAcademico {
 
-/*metodo para mostrar el reporte academico de un estudiante*/
+        /* metodo para mostrar el reporte academico de un estudiante */
 
-    public void mostrarReporte(
-            Estudiante estudiante) {
+        public void mostrarReporte(
+                        Estudiante estudiante) {
 
-        System.out.println(
-                "REPORTE");
+                System.out.println(
+                                "REPORTE");
 
-        estudiante.mostrarInformacion();
+                estudiante.mostrarInformacion();
 
-        estudiante.mostrarNotas();
+                estudiante.mostrarNotas();
 
-        System.out.println(
-                "Materias inscritas:");
+                System.out.println(
+                                "Materias inscritas:");
 
-        for (Materia materia :
-                estudiante.getMaterias()) {
+                for (Materia materia : estudiante.getMaterias()) {
 
-            System.out.println(
-                    materia.getCodigo() + " - " + materia.getNombre());
+                        System.out.println(
+                                        materia.getCodigo() + " - " + materia.getNombre());
+                }
         }
-    }
 }

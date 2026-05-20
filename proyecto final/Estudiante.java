@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.HashMap;
+
 /*hereda de persona */
 public class Estudiante extends Persona {
 
@@ -39,7 +40,7 @@ public class Estudiante extends Persona {
                 "Semestre: " + semestre);
 
         System.out.println(
-                "Promedio: "+ calcularPromedio());
+                "Promedio: " + calcularPromedio());
     }
 
     public void agregarMateria(
@@ -95,7 +96,7 @@ public class Estudiante extends Persona {
 
         System.out.println(
                 "Promedio: "
-                + calcularPromedio());
+                        + calcularPromedio());
     }
 
     public LinkedList<Materia> getMaterias() {

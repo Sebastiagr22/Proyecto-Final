@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+
 public class Materia {
 
     protected String codigo;
@@ -9,17 +10,17 @@ public class Materia {
 
     protected int dia;
     protected int hora;
-/* aqui se definen los pre requisitos */
+    /* aqui se definen los pre requisitos */
     protected LinkedList<String> preRequisitos;
 
-/*aqui se definen los estudiantes inscritos */
+    /* aqui se definen los estudiantes inscritos */
     protected LinkedList<Estudiante> inscritos;
 
-/*aqui se define la cola de espera */
+    /* aqui se define la cola de espera */
     protected Queue<Estudiante> colaEspera;
 
     public Materia(
-            String codigo, String nombre, int cupos, int creditos,  int dia, int hora) {
+            String codigo, String nombre, int cupos, int creditos, int dia, int hora) {
 
         this.codigo = codigo;
         this.nombre = nombre;
@@ -28,14 +29,11 @@ public class Materia {
         this.dia = dia;
         this.hora = hora;
 
-        preRequisitos =
-                new LinkedList<String>();
+        preRequisitos = new LinkedList<String>();
 
-        inscritos =
-                new LinkedList<Estudiante>();
+        inscritos = new LinkedList<Estudiante>();
 
-        colaEspera =
-                new LinkedList<Estudiante>();
+        colaEspera = new LinkedList<Estudiante>();
     }
 
     public void agregarPreRequisito(
@@ -81,9 +79,14 @@ public class Materia {
                     "Agregado a cola");
         }
     }
-/* aqui se cancela la inscripcion de un estudiante, si el estudiante estaba inscrito, se elimina de la
- lista de inscritos y se agrega a la materia al siguiente estudiante en la cola de espera.
- Si el estudiante no estaba inscrito, se muestra un mensaje indicando que no estaba inscrito. */
+    /*
+     * aqui se cancela la inscripcion de un estudiante, si el estudiante estaba
+     * inscrito, se elimina de la
+     * lista de inscritos y se agrega a la materia al siguiente estudiante en la
+     * cola de espera.
+     * Si el estudiante no estaba inscrito, se muestra un mensaje indicando que no
+     * estaba inscrito.
+     */
 
     public void cancelarInscripcion(
             Estudiante estudiante) {
@@ -97,8 +100,7 @@ public class Materia {
 
             if (!colaEspera.isEmpty()) {
 
-                Estudiante siguiente =
-                        colaEspera.poll();
+                Estudiante siguiente = colaEspera.poll();
 
                 inscritos.add(siguiente);
 
@@ -106,7 +108,7 @@ public class Materia {
 
                 System.out.println(
                         siguiente.getNombre()
-                        + " ingreso desde cola");
+                                + " ingreso desde cola");
             }
 
         } else {
@@ -115,7 +117,8 @@ public class Materia {
                     "No estaba inscrito");
         }
     }
- /* aqui se muestra la lista de estudiantes inscritos y la cola de espera. */
+
+    /* aqui se muestra la lista de estudiantes inscritos y la cola de espera. */
     public void mostrarInscritos() {
 
         System.out.println(

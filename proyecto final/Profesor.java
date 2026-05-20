@@ -1,6 +1,8 @@
 public class Profesor extends Persona {
 
-/*hereda de persona, esta clase representa a un profesor con una especialidad*/
+    /*
+     * hereda de persona, esta clase representa a un profesor con una especialidad
+     */
 
     protected String especialidad;
 
@@ -11,7 +13,10 @@ public class Profesor extends Persona {
 
         this.especialidad = especialidad;
     }
-/*metodo para mostrar la informacion del profesor, sobreescribe el metodo de la clase padre*/
+    /*
+     * metodo para mostrar la informacion del profesor, sobreescribe el metodo de la
+     * clase padre
+     */
 
     @Override
     public void mostrarInformacion() {
@@ -20,6 +25,6 @@ public class Profesor extends Persona {
                 "Profesor: " + nombre);
 
         System.out.println(
-                "Especialidad: "+ especialidad);
+                "Especialidad: " + especialidad);
     }
 }

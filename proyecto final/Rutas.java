@@ -62,52 +62,50 @@ public class Rutas {
 
     /* Dijkstra basico */
     public void dijkstra(
-        int origen,
-        int destino) {
+            int origen, int destino) {
 
-    if (distancias[origen][destino] != 0) {
+        if (distancias[origen][destino] != 0) {
 
-        System.out.println(
-                "Ruta mas corta:");
+            System.out.println(
+                    "Ruta mas corta:");
 
-        System.out.println(
-                edificios[origen]
-                + " -> "
-                + edificios[destino]);
+            System.out.println(
+                    edificios[origen]
+                            + " -> "
+                            + edificios[destino]);
 
-        System.out.println(
-                "Distancia total: "
-                + distancias[origen][destino]
-                + " metros");
+            System.out.println(
+                    "Distancia total: "
+                            + distancias[origen][destino]
+                            + " metros");
 
-    } else {
+        } else {
 
-        /* Buscar rutas intermedias*/
+            /* Buscar rutas intermedias */
 
-        for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
 
-            if (distancias[origen][i] != 0
-                    &&
-                    distancias[i][destino] != 0) {
+                if (distancias[origen][i] != 0
+                        &&
+                        distancias[i][destino] != 0) {
 
-                int total =
-                        distancias[origen][i] + distancias[i][destino];
+                    int total = distancias[origen][i] + distancias[i][destino];
 
-                System.out.println(
-                        "Ruta mas corta:");
+                    System.out.println(
+                            "Ruta mas corta:");
 
-                System.out.println(
-                        edificios[origen] + " -> " + edificios[i] + " -> " + edificios[destino]);
+                    System.out.println(
+                            edificios[origen] + " -> " + edificios[i] + " -> " + edificios[destino]);
 
-                System.out.println(
-                        "Distancia total: " + total + " metros");
+                    System.out.println(
+                            "Distancia total: " + total + " metros");
 
-                return;
+                    return;
+                }
             }
-        }
 
-        System.out.println(
-                "No existe ruta");
+            System.out.println(
+                    "No existe ruta");
+        }
     }
-}
 }
